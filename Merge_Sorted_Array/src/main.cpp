@@ -1,10 +1,6 @@
 #include <iostream>
 #include <vector>
 
-// What I know:
-// Where the first vector's 0 starts
-// Both of the vector's lenghts
-
 class Solution {
 public:
     void merge(std::vector<int>& nums1, int unsigned m, std::vector<int>& nums2, int n) {
