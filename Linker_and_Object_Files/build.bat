@@ -18,5 +18,5 @@ move ".\*.o" "%destination_dir%"
 rem Link all object files to create the executable
 g++ "%destination_dir%\*.o" -o "%destination_dir%\app.exe"
 
-rem Optionally, clean up object files after linking
-rem del /Q build\*.o
+rem Clean up object files after linking
+del /Q "%destination_dir%\*.o"
