@@ -4,22 +4,22 @@
 class Solution {
 public:
     void merge(std::vector<int>& nums1, int unsigned m, std::vector<int>& nums2, int n) {
-        for (int unsigned i = m; i < nums1.size(); i++) {
-            nums1[i] = nums2[i-m];
-        }
+        int i = m - 1; // Index for nums1
+        int j = n - 1; // Index for nums2
+        int k = m + n - 1; // Index for the merged array
 
-        for (int unsigned i = 0; i < nums1.size(); i++) {
-            for (int unsigned a = i + 1; a < nums1.size(); a++) {
-                if (nums1[a] < nums1[i]) {
-                    int temp = nums1[i];
-                    nums1[i] = nums1[a];
-                    nums1[a] = temp;
-                }
+        while (i >= 0 && j >= 0) {
+            // Compare elements from nums1 and nums2 and place the larger one at the end of nums1
+            if (nums1[i] > nums2[j]) {
+                nums1[k--] = nums1[i--];
+            } else {
+                nums1[k--] = nums2[j--];
             }
         }
 
-        for (int unsigned i = 0; i < nums1.size(); i++) {
-            std::cout << nums1[i];
+        // If there are remaining elements in nums2, copy them to nums1
+        while (j >= 0) {
+            nums1[k--] = nums2[j--];
         }
     }
 };
@@ -32,4 +32,9 @@ int main() {
 
     Solution sol;
     sol.merge(nums1, m, nums2, n);
+
+    for (auto elem : nums1)
+    {
+        std::cout << elem << " ";
+    }
 }
